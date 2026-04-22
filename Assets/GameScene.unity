@@ -805,6 +805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1045732106}
   - component: {fileID: 1045732109}
+  - component: {fileID: 1045732110}
   - component: {fileID: 1045732108}
   - component: {fileID: 1045732107}
   m_Layer: 0
@@ -908,6 +909,18 @@ MonoBehaviour:
     m_Bits: 64
   _groundDrag: 5
   _slideDrag: 2
+--- !u!114 &1045732110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045732105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ff2a5a152a3ca4e924e18d036d79c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1105680464
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,6 +1444,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28390f67db9eaac48803bb62b8a2f306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerTransform: {fileID: 1045732106}
+  _orientationTransform: {fileID: 1982100655}
+  _playerVisualTransform: {fileID: 543450651735182795}
+  _rotationSpeed: 7
 --- !u!1 &1832228325
 GameObject:
   m_ObjectHideFlags: 0
