@@ -10,37 +10,35 @@ public class PlayerController : MonoBehaviour
 
 
     [Header("Movement Settings")]
-    [SerializeField] private float _movementSpeed;
     [SerializeField] private KeyCode _movementKey;
+    [SerializeField] private float _movementSpeed;
 
 
     [Header("Jump Settings")]
     [SerializeField] private KeyCode _jumpKey;
-    [SerializeField] private float _jumpForce;
     [SerializeField] private bool _canJump = true;
+    [SerializeField] private float _jumpCooldown;
+    [SerializeField] private float _jumpForce;
     [SerializeField] private float _airMultiplier;
     [SerializeField] private float _airDrag;
-    [SerializeField] private float _jumpCooldown;
 
 
     [Header("Sliding Settings")]
     [SerializeField] private KeyCode _slideKey;
     [SerializeField] private float _slideMultiplier;
+    [SerializeField] private float _slideDrag;
 
 
     [Header("Ground Check Settings")]
-    [SerializeField] private float _playerHeight;
     [SerializeField] private LayerMask _groundLayer;
-
-
-    [Header("Drag Settings")]
+    [SerializeField] private float _playerHeight;
     [SerializeField] private float _groundDrag;
-    [SerializeField] private float _slideDrag;
 
 
     private StateController _stateController;
     private Rigidbody _playerRigidbody;
 
+    private float startingMovementSpeed, startingJumpForce;
     private float _horizontalInput, _verticalInput;
 
     private Vector3 _movementDirection;
@@ -52,6 +50,9 @@ public class PlayerController : MonoBehaviour
         _stateController = GetComponent<StateController>();
         _playerRigidbody = GetComponent<Rigidbody>();
         _playerRigidbody.freezeRotation = true;
+
+        startingMovementSpeed = _movementSpeed;
+        startingJumpForce = _jumpForce;
     }
 
     private void Update()
@@ -165,6 +166,31 @@ public class PlayerController : MonoBehaviour
         _canJump = true;
     }
 
+    #region Boost Methods
+    public void SetMovementSpeed(float speedBoostAmount, float duration)
+    {
+        _movementSpeed += speedBoostAmount;
+        Invoke(nameof(ResetMovementSpeed), duration);
+    }
+
+    private void ResetMovementSpeed()
+    {
+        _movementSpeed = startingMovementSpeed;
+    }
+
+    public void SetJumpForce(float jumpBoostAmount, float duration)
+    {
+        _jumpForce += jumpBoostAmount;
+        Invoke(nameof(ResetJumpForce), duration);
+    }
+
+    private void ResetJumpForce()
+    {
+        _jumpForce = startingJumpForce;
+    }
+    #endregion
+
+    #region Helper Methods
     private bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, _playerHeight / 2 + 0.2f, _groundLayer);
@@ -179,4 +205,5 @@ public class PlayerController : MonoBehaviour
     {
         return _isSliding;
     }
+    #endregion
 }
