@@ -17,8 +17,8 @@ public class PlayerController : MonoBehaviour
     [Header("Jump Settings")]
     [SerializeField] private KeyCode _jumpKey;
     [SerializeField] private bool _canJump = true;
-    [SerializeField] private float _jumpCooldown;
     [SerializeField] private float _jumpForce;
+    [SerializeField] private float _jumpCooldown;
     [SerializeField] private float _airMultiplier;
     [SerializeField] private float _airDrag;
 
