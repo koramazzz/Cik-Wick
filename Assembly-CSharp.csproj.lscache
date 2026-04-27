@@ -70,8 +70,11 @@ Assets/_GameAssets/Scripts/
    PlayerInteractionController.cs
    StateController.cs
  Helpers/Consts.cs
+ Managers/HealthManager.cs
  ScriptableObjects/WheatDesignSO.cs
- UI/PlayerStateUI.cs
+ UI/
+  PlayerHealthUI.cs
+  PlayerStateUI.cs
 Temp/obj/Debug/Assembly-CSharp/.NETStandard,Version=v2.1.AssemblyAttributes.cs
 
 [metadataReferences]
