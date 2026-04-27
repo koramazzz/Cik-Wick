@@ -75,6 +75,7 @@ Assets/_GameAssets/Scripts/
  UI/
   PlayerHealthUI.cs
   PlayerStateUI.cs
+  TimerUI.cs
 Temp/obj/Debug/Assembly-CSharp/.NETStandard,Version=v2.1.AssemblyAttributes.cs
 
 [metadataReferences]
