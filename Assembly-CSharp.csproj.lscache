@@ -55,6 +55,7 @@ Assets/_GameAssets/Scripts/Boostables/
  IBoostable.cs
  SpatulaBooster.cs
 Assets/_GameAssets/Scripts/Collectibles/
+ EggCollectible.cs
  ICollectible.cs
  Wheats/
   GoldWheatCollectible.cs
@@ -70,9 +71,12 @@ Assets/_GameAssets/Scripts/
    PlayerInteractionController.cs
    StateController.cs
  Helpers/Consts.cs
- Managers/HealthManager.cs
+ Managers/
+  GameManager.cs
+  HealthManager.cs
  ScriptableObjects/WheatDesignSO.cs
  UI/
+  EggCounterUI.cs
   PlayerHealthUI.cs
   PlayerStateUI.cs
   TimerUI.cs
