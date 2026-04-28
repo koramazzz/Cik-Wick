@@ -61,15 +61,18 @@ Assets/_GameAssets/Scripts/Collectibles/
   GoldWheatCollectible.cs
   HolyWheatCollectible.cs
   RottenWheatCollectible.cs
+Assets/_GameAssets/Scripts/Enums/
+ GameState.cs
+ PlayerState.cs
+Assets/_GameAssets/Scripts/Gameplay/
+ Camera/ThirdPersonCameraController.cs
+ Player/
+  PlayerAnimationController.cs
+  PlayerCollectibleCollector.cs
+  PlayerController.cs
+  PlayerInteractionController.cs
+  StateController.cs
 Assets/_GameAssets/Scripts/
- Enums/PlayerState.cs
- Gameplay/
-  Camera/ThirdPersonCameraController.cs
-  Player/
-   PlayerAnimationController.cs
-   PlayerController.cs
-   PlayerInteractionController.cs
-   StateController.cs
  Helpers/Consts.cs
  Managers/
   GameManager.cs
@@ -79,6 +82,7 @@ Assets/_GameAssets/Scripts/
   EggCounterUI.cs
   PlayerHealthUI.cs
   PlayerStateUI.cs
+  SettingsUI.cs
   TimerUI.cs
 Temp/obj/Debug/Assembly-CSharp/.NETStandard,Version=v2.1.AssemblyAttributes.cs
 
