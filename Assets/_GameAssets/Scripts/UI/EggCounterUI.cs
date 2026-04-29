@@ -28,7 +28,7 @@ public class EggCounterUI : MonoBehaviour
 
     public void SetEggCompleted()
     {
-        _eggCounterText.DOColor(_eggCounterColor, _colorChangeDuration);
-        _eggCounterRectTransform.DOScale(Vector3.one * 1.2f, _scaleDuration).SetEase(_scaleEase);
+        _eggCounterText.DOColor(_eggCounterColor, _colorChangeDuration).SetLink(gameObject);
+        _eggCounterRectTransform.DOScale(Vector3.one * 1.2f, _scaleDuration).SetEase(_scaleEase).SetLink(gameObject);
     }
 }

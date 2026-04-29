@@ -45,7 +45,7 @@ public class TimerUI : MonoBehaviour
 
     private void PlayRotationAnimation()
     {
-        _rotationTween = _timerRotatableTransform.DORotate(new Vector3(0, 0, -360), _rotationDuration, RotateMode.FastBeyond360).SetEase(_rotationEase).SetLoops(-1, LoopType.Restart);
+        _rotationTween = _timerRotatableTransform.DORotate(new Vector3(0, 0, -360), _rotationDuration, RotateMode.FastBeyond360).SetEase(_rotationEase).SetLoops(-1, LoopType.Restart).SetLink(gameObject);
     }
 
     private void StartTimer()
@@ -63,10 +63,14 @@ public class TimerUI : MonoBehaviour
         }
 
         _elapsedTime++;
+        _timerText.text = GetFormattedTime();
+    }
 
+    public string GetFormattedTime()
+    {
         int minutes = Mathf.FloorToInt(_elapsedTime / 60f);
         int seconds = Mathf.FloorToInt(_elapsedTime % 60f);
-        _timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        return string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     private void PauseTimer()

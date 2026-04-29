@@ -77,6 +77,9 @@ Assets/_GameAssets/Scripts/
  Managers/
   GameManager.cs
   HealthManager.cs
+ Popups/
+  LosePopup.cs
+  WinPopup.cs
  ScriptableObjects/WheatDesignSO.cs
  UI/
   EggCounterUI.cs
@@ -84,6 +87,7 @@ Assets/_GameAssets/Scripts/
   PlayerStateUI.cs
   SettingsUI.cs
   TimerUI.cs
+  WinLoseUI.cs
 Temp/obj/Debug/Assembly-CSharp/.NETStandard,Version=v2.1.AssemblyAttributes.cs
 
 [metadataReferences]

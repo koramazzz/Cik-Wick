@@ -30,10 +30,10 @@ public class PlayerHealthUI : MonoBehaviour
 
     private void AnimateDamageSprite(Image activeImage,RectTransform activeImageTransform)
     {
-        activeImageTransform.DOScale(0, _damageAnimationDuration).SetEase(_destroyAnimationEase).OnComplete(() =>
+        activeImageTransform.DOScale(0, _damageAnimationDuration).SetEase(_destroyAnimationEase).SetLink(gameObject).OnComplete(() =>
         {
             activeImage.sprite = _playerUnhealthySprite;
-            activeImageTransform.DOScale(1f, _damageAnimationDuration).SetEase(_recoverAnimationEase);
+            activeImageTransform.DOScale(1f, _damageAnimationDuration).SetEase(_recoverAnimationEase).SetLink(gameObject);
         });
     }
 

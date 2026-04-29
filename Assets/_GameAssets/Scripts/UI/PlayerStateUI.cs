@@ -75,8 +75,8 @@ public class PlayerStateUI : MonoBehaviour
         _playerWalkingImage.sprite = playerWalkingSprite;
         _playerSlidingImage.sprite = playerSlidingSprite;
 
-        activeTransform.DOAnchorPosX(-25f, _moveDuration).SetEase(_moveEase);
-        passiveTransform.DOAnchorPosX(-90f, _moveDuration).SetEase(_moveEase);
+        activeTransform.DOAnchorPosX(-25f, _moveDuration).SetEase(_moveEase).SetLink(gameObject);
+        passiveTransform.DOAnchorPosX(-90f, _moveDuration).SetEase(_moveEase).SetLink(gameObject);
     }
 
     private IEnumerator SetBoosterUserInterfaces(RectTransform activeTransform, Image boosterImage, Image wheatImage, Sprite activeSprite, Sprite passiveSprite, 
@@ -84,13 +84,13 @@ public class PlayerStateUI : MonoBehaviour
     {
         boosterImage.sprite = activeSprite;
         wheatImage.sprite = activeWheatSprite;
-        activeTransform.DOAnchorPosX(25f, _moveDuration).SetEase(_moveEase);
+        activeTransform.DOAnchorPosX(25f, _moveDuration).SetEase(_moveEase).SetLink(gameObject);
 
         yield return new WaitForSeconds(duration);
 
         boosterImage.sprite = passiveSprite;
         wheatImage.sprite = passiveWheatSprite;
-        activeTransform.DOAnchorPosX(90f, _moveDuration).SetEase(_moveEase);
+        activeTransform.DOAnchorPosX(90f, _moveDuration).SetEase(_moveEase).SetLink(gameObject);
     }
 
     public void PlayBoosterUIAnimations(RectTransform activeTransform, Image boosterImage, Image wheatImage, Sprite activeSprite, Sprite passiveSprite, 

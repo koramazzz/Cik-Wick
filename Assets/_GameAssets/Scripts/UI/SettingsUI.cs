@@ -38,8 +38,8 @@ public class SettingsUI : MonoBehaviour
         _blackBackgroundObject.SetActive(true);
         _settingsPopupObject.SetActive(true);
 
-        _blackBackgroundImage.DOFade(0.8f, _animationDuration).SetEase(Ease.Linear).SetUpdate(true);
-        _settingsPopupObject.transform.DOScale(1.5f, _animationDuration).SetEase(Ease.OutBack).SetUpdate(true);
+        _blackBackgroundImage.DOFade(0.8f, _animationDuration).SetEase(Ease.Linear).SetUpdate(true).SetLink(gameObject);
+        _settingsPopupObject.transform.DOScale(1.5f, _animationDuration).SetEase(Ease.OutBack).SetUpdate(true).SetLink(gameObject);
 
     }
 
@@ -47,8 +47,8 @@ public class SettingsUI : MonoBehaviour
     {
         GameManager.Instance.ChangeGameState(GameState.Resume);
 
-        _blackBackgroundImage.DOFade(0f, _animationDuration).SetEase(Ease.Linear).SetUpdate(true);
-        _settingsPopupObject.transform.DOScale(0f, _animationDuration).SetEase(Ease.OutExpo).SetUpdate(true).OnComplete(() =>
+        _blackBackgroundImage.DOFade(0f, _animationDuration).SetEase(Ease.Linear).SetUpdate(true).SetLink(gameObject);
+        _settingsPopupObject.transform.DOScale(0f, _animationDuration).SetEase(Ease.OutExpo).SetUpdate(true).SetLink(gameObject).OnComplete(() =>
         {
             _blackBackgroundObject.SetActive(false);
             _settingsPopupObject.SetActive(false);

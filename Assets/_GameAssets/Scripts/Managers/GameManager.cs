@@ -4,12 +4,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    public static bool IsGameplayActive => Instance != null && 
+        (Instance._currentGameState == GameState.Play || Instance._currentGameState == GameState.Resume);
 
     public event Action<GameState> OnGameStateChanged;
 
     
     [Header("References")]  
     [SerializeField] private EggCounterUI _eggCounterUI;
+    [SerializeField] private WinLoseUI _winLoseUI;
 
     [Header("Settings")]
     [SerializeField] private int _maxEggCount = 5;
@@ -36,7 +39,7 @@ public class GameManager : MonoBehaviour
     
     private void SetGameTimeScale(GameState gameState)
     {
-        Time.timeScale = gameState == GameState.Pause ? 0f : 1f;
+        Time.timeScale = gameState == GameState.Pause || gameState == GameState.GameOver ? 0f : 1f;
     }
 
     public void OnEggCollected()
@@ -46,8 +49,10 @@ public class GameManager : MonoBehaviour
 
         if (_currentEggCount == _maxEggCount)
         {
+            // WIN
             _eggCounterUI.SetEggCompleted();
             ChangeGameState(GameState.GameOver);
+            _winLoseUI.OnGameWin();
         }
     }
 
