@@ -61,6 +61,9 @@ Assets/_GameAssets/Scripts/Collectibles/
   GoldWheatCollectible.cs
   HolyWheatCollectible.cs
   RottenWheatCollectible.cs
+Assets/_GameAssets/Scripts/Damageables/
+ FireDamageable.cs
+ IDamageable.cs
 Assets/_GameAssets/Scripts/Enums/
  GameState.cs
  PlayerState.cs
@@ -71,6 +74,7 @@ Assets/_GameAssets/Scripts/Gameplay/
   PlayerCollectibleCollector.cs
   PlayerController.cs
   PlayerInteractionController.cs
+  PlayerParticleCollector.cs
   StateController.cs
 Assets/_GameAssets/Scripts/
  Helpers/Consts.cs

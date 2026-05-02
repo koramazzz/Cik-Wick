@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] private int _maxEggCount = 5;
+    [SerializeField] private float _delayBeforeGameOver = 1f;
 
     private int _currentEggCount;
     private GameState _currentGameState;
@@ -23,6 +25,11 @@ public class GameManager : MonoBehaviour
     public void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        HealthManager.Instance.OnPlayerDeath += HealthManager_OnPlayerDeath;
     }
 
     private void OnEnable()
@@ -54,6 +61,18 @@ public class GameManager : MonoBehaviour
             ChangeGameState(GameState.GameOver);
             _winLoseUI.OnGameWin();
         }
+    }
+
+    private IEnumerator OnGameOver()
+    {
+        yield return new WaitForSeconds(_delayBeforeGameOver);
+        ChangeGameState(GameState.GameOver);
+        _winLoseUI.OnGameLose();
+    }
+
+    private void HealthManager_OnPlayerDeath()
+    {
+        StartCoroutine(OnGameOver());
     }
 
     public GameState GetCurrentGameState()

@@ -17,9 +17,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Jump Settings")]
     [SerializeField] private KeyCode _jumpKey;
-    [SerializeField] private bool _canJump = true;
     [SerializeField] private float _jumpForce;
-    [SerializeField] private float _jumpCooldown;
     [SerializeField] private float _airMultiplier;
     [SerializeField] private float _airDrag;
 
@@ -87,11 +85,11 @@ public class PlayerController : MonoBehaviour
 
         var newplayerState = currentPlayerState switch
         {
-            _ when movementDirection == Vector3.zero && isGrounded && !isSliding => PlayerState.Idle,
-            _ when movementDirection != Vector3.zero && isGrounded && !isSliding => PlayerState.Move,
-            _ when movementDirection != Vector3.zero && isGrounded && isSliding => PlayerState.Slide,
-            _ when movementDirection == Vector3.zero && isGrounded && isSliding => PlayerState.SlideIdle,
-            _ when !isGrounded && _canJump => PlayerState.Jump,
+            _ when !isGrounded => PlayerState.Jump,
+            _ when isSliding && movementDirection != Vector3.zero => PlayerState.Slide,
+            _ when isSliding && movementDirection == Vector3.zero => PlayerState.SlideIdle,
+            _ when movementDirection == Vector3.zero && isGrounded => PlayerState.Idle,
+            _ when movementDirection != Vector3.zero && isGrounded => PlayerState.Move,
             _ => currentPlayerState
         };
         
@@ -111,16 +109,14 @@ public class PlayerController : MonoBehaviour
             _isSliding = true;
         }
 
-        else if (Input.GetKeyUp(_movementKey))
+        if (Input.GetKeyUp(_movementKey))
         {
             _isSliding = false;
         }
 
-        else if (Input.GetKeyDown(_jumpKey) && _canJump && IsGrounded())
+        if (Input.GetKeyDown(_jumpKey) && IsGrounded())
         {
-            _canJump = false;
             SetPlayerJumping();
-            Invoke(nameof(ResetJumping), _jumpCooldown);
         }
     }
 
@@ -142,10 +138,11 @@ public class PlayerController : MonoBehaviour
     private void SetPlayerDrag()
     {
         _playerRigidbody.linearDamping = _stateController.GetCurrentPlayerState() switch
-        
         {
+            PlayerState.Idle => _groundDrag,
             PlayerState.Move => _groundDrag,
             PlayerState.Slide => _slideDrag,
+            PlayerState.SlideIdle => _slideDrag,
             PlayerState.Jump => _airDrag,
             _ => _playerRigidbody.linearDamping
         };
@@ -170,11 +167,6 @@ public class PlayerController : MonoBehaviour
         _playerRigidbody.linearVelocity = new Vector3(_playerRigidbody.linearVelocity.x, 0f, _playerRigidbody.linearVelocity.z);
 
         _playerRigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
-    }
-
-    private void ResetJumping()
-    {
-        _canJump = true;
     }
 
     #region Boost Methods
@@ -204,7 +196,7 @@ public class PlayerController : MonoBehaviour
     #region Helper Methods
     private bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, Vector3.down, _playerHeight / 2 + 0.2f, _groundLayer);
+        return Physics.SphereCast(transform.position, 0.2f, Vector3.down, out _, _playerHeight / 2 + 0.3f, _groundLayer);
     }
 
     private Vector3 GetMovementDirection()
