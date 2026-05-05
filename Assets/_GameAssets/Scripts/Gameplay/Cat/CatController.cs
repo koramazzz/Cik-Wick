@@ -29,6 +29,7 @@ public class CatController : MonoBehaviour
     private float _timer;
     private bool _isWaiting = false;
     private bool _isChasing = false;
+    private bool _hasCaughtPlayer;
 
     private void Awake()
     {
@@ -44,6 +45,11 @@ public class CatController : MonoBehaviour
 
     private void Update()
     {
+        if (_hasCaughtPlayer)
+        {
+            return;
+        }
+
         if (_playerController.CanCatChase())
         {
             SetChaseMovement();
@@ -66,6 +72,7 @@ public class CatController : MonoBehaviour
 
         if (Vector3.Distance(transform.position, _playerTransform.position) <= _chaseDistance && _isChasing)
         {
+            _hasCaughtPlayer = true;
             OnCatCatched?.Invoke();
             _catStateController.ChangeState(CatState.Attacking);
             _isChasing = false;

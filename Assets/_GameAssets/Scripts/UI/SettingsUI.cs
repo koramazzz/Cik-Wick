@@ -1,4 +1,6 @@
+using System;
 using DG.Tweening;
+using MaskTransitions;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,9 +30,9 @@ public class SettingsUI : MonoBehaviour
 
         _settingsButton.onClick.AddListener(OnSettingsButtonClicked);
         _resumeButton.onClick.AddListener(OnResumeButtonClicked);
+        _mainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
     }
-
-
+    
     private void OnSettingsButtonClicked()
     {
         GameManager.Instance.ChangeGameState(GameState.Pause);
@@ -53,5 +55,10 @@ public class SettingsUI : MonoBehaviour
             _blackBackgroundObject.SetActive(false);
             _settingsPopupObject.SetActive(false);
         });
+    }
+
+    private void OnMainMenuButtonClicked()
+    {
+        TransitionManager.Instance.LoadLevel(Consts.Scenes.MENU_SCENE);
     }
 }

@@ -51,6 +51,9 @@ TemporaryDependencyNodeTargetIdentifier=netstandard2.1
 /warnaserror+:NU1605
 
 [sourceFiles]
+Assets/_GameAssets/3rdParty/Nearmint Studios/Mask Transitions/Scripts/
+ CutoutMaskUI.cs
+ TransitionManager.cs
 Assets/_GameAssets/Scripts/Boostables/
  IBoostable.cs
  SpatulaBooster.cs
