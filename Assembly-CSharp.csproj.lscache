@@ -92,6 +92,7 @@ Assets/_GameAssets/Scripts/
  ScriptableObjects/WheatDesignSO.cs
  UI/
   EggCounterUI.cs
+  MenuControllerUI.cs
   PlayerHealthUI.cs
   PlayerStateUI.cs
   SettingsUI.cs
