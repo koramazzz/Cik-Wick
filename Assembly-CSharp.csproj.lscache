@@ -71,6 +71,7 @@ Assets/_GameAssets/Scripts/Enums/
 Assets/_GameAssets/Scripts/Gameplay/
  Camera/ThirdPersonCameraController.cs
  Cat/
+  CatAnimationController.cs
   CatController.cs
   CatStateController.cs
  Player/
