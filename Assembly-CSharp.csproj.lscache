@@ -65,10 +65,14 @@ Assets/_GameAssets/Scripts/Damageables/
  FireDamageable.cs
  IDamageable.cs
 Assets/_GameAssets/Scripts/Enums/
+ CatState.cs
  GameState.cs
  PlayerState.cs
 Assets/_GameAssets/Scripts/Gameplay/
  Camera/ThirdPersonCameraController.cs
+ Cat/
+  CatController.cs
+  CatStateController.cs
  Player/
   PlayerAnimationController.cs
   PlayerCollectibleCollector.cs
