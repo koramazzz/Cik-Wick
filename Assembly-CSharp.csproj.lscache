@@ -84,14 +84,17 @@ Assets/_GameAssets/Scripts/Gameplay/
   PlayerInteractionController.cs
   PlayerParticleCollector.cs
   StateController.cs
+Assets/_GameAssets/Scripts/Helpers/
+ CameraShake.cs
+ Consts.cs
+Assets/_GameAssets/Scripts/Managers/
+ GameManager.cs
+ HealthManager.cs
+ TimelineManager.cs
+Assets/_GameAssets/Scripts/Popups/
+ LosePopup.cs
+ WinPopup.cs
 Assets/_GameAssets/Scripts/
- Helpers/Consts.cs
- Managers/
-  GameManager.cs
-  HealthManager.cs
- Popups/
-  LosePopup.cs
-  WinPopup.cs
  ScriptableObjects/WheatDesignSO.cs
  UI/
   EggCounterUI.cs

@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        ChangeGameState(GameState.Play);
+        ChangeGameState(GameState.CutScene);
     }
 
     public void ChangeGameState(GameState newGameState)
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
     private void CatController_OnCatCatched()
     {
         _playerHealthUI.AnimateDamageForAll();
-        CameraShake.Instance.ShakeCamera(1.5f, 1.2f, 0.2f);
+        CameraShake.Instance.ShakeCamera(3f, 1.2f, 0.2f);
         StartCoroutine(OnGameOver());
     }
 }
