@@ -35,6 +35,7 @@ public class SettingsUI : MonoBehaviour
     
     private void OnSettingsButtonClicked()
     {
+        AudioManager.Instance.Play(SoundType.ButtonClickSound);
         GameManager.Instance.ChangeGameState(GameState.Pause);
 
         _blackBackgroundObject.SetActive(true);
@@ -47,6 +48,7 @@ public class SettingsUI : MonoBehaviour
 
     private void OnResumeButtonClicked()
     {
+        AudioManager.Instance.Play(SoundType.ButtonClickSound);
         GameManager.Instance.ChangeGameState(GameState.Resume);
 
         _blackBackgroundImage.DOFade(0f, _animationDuration).SetEase(Ease.Linear).SetUpdate(true).SetLink(gameObject);
@@ -59,6 +61,7 @@ public class SettingsUI : MonoBehaviour
 
     private void OnMainMenuButtonClicked()
     {
+        AudioManager.Instance.Play(SoundType.TransitionSound);
         TransitionManager.Instance.LoadLevel(Consts.Scenes.MENU_SCENE);
     }
 }

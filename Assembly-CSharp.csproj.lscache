@@ -54,6 +54,10 @@ TemporaryDependencyNodeTargetIdentifier=netstandard2.1
 Assets/_GameAssets/3rdParty/Nearmint Studios/Mask Transitions/Scripts/
  CutoutMaskUI.cs
  TransitionManager.cs
+Assets/_GameAssets/Scripts/Audio/
+ AudioManager.cs
+ BackgroundMusic.cs
+ Sound.cs
 Assets/_GameAssets/Scripts/Boostables/
  IBoostable.cs
  SpatulaBooster.cs
@@ -71,6 +75,7 @@ Assets/_GameAssets/Scripts/Enums/
  CatState.cs
  GameState.cs
  PlayerState.cs
+ SoundType.cs
 Assets/_GameAssets/Scripts/Gameplay/
  Camera/ThirdPersonCameraController.cs
  Cat/
@@ -85,6 +90,7 @@ Assets/_GameAssets/Scripts/Gameplay/
   PlayerParticleCollector.cs
   StateController.cs
 Assets/_GameAssets/Scripts/Helpers/
+ ButtonHoverController.cs
  CameraShake.cs
  Consts.cs
 Assets/_GameAssets/Scripts/Managers/

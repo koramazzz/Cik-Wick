@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         ChangeGameState(GameState.CutScene);
+        BackgroundMusic.Instance.PlayBackgroundMusic(true);
     }
 
     public void ChangeGameState(GameState newGameState)
@@ -65,16 +66,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator OnGameOver()
+    private IEnumerator OnGameOver(bool _isCatCatched)
     {
         yield return new WaitForSeconds(_delayBeforeGameOver);
         ChangeGameState(GameState.GameOver);
         _winLoseUI.OnGameLose();
+
+        if (_isCatCatched)
+        {
+            AudioManager.Instance.Play(SoundType.CatSound);
+        }
     }
 
     private void HealthManager_OnPlayerDeath()
     {
-        StartCoroutine(OnGameOver());
+        StartCoroutine(OnGameOver(false));
     }
 
     public GameState GetCurrentGameState()
@@ -86,6 +92,6 @@ public class GameManager : MonoBehaviour
     {
         _playerHealthUI.AnimateDamageForAll();
         CameraShake.Instance.ShakeCamera(3f, 1.2f, 0.2f);
-        StartCoroutine(OnGameOver());
+        StartCoroutine(OnGameOver(true));
     }
 }
