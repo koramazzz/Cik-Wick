@@ -246,6 +246,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _settingsPopupObject: {fileID: 545230961}
   _blackBackgroundObject: {fileID: 1865856385}
+  _musicActiveSprite: {fileID: 21300000, guid: 572d015c0604b0b49b09265a1072b1d4, type: 3}
+  _musicInactiveSprite: {fileID: 21300000, guid: 5f1b2ea972b168448b4c057a28eb7f2a, type: 3}
+  _soundsActiveSprite: {fileID: 21300000, guid: b70c31f4b7494cf40ad2dfcb839120cf, type: 3}
+  _soundsInactiveSprite: {fileID: 21300000, guid: 11231ee54f9eb5948b175a2a69b0d050, type: 3}
   _settingsButton: {fileID: 1035507723}
   _musicButton: {fileID: 746440203}
   _soundsButton: {fileID: 722179733}

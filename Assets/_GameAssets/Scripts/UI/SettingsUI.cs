@@ -10,6 +10,11 @@ public class SettingsUI : MonoBehaviour
     [SerializeField] private GameObject _settingsPopupObject;
     [SerializeField] private GameObject _blackBackgroundObject;
 
+    [Header("Sprites")]
+    [SerializeField] private Sprite _musicActiveSprite;
+    [SerializeField] private Sprite _musicInactiveSprite;
+    [SerializeField] private Sprite _soundsActiveSprite;
+    [SerializeField] private Sprite _soundsInactiveSprite;
 
     [Header("Buttons")]
     [SerializeField] private Button _settingsButton;
@@ -22,6 +27,8 @@ public class SettingsUI : MonoBehaviour
     [SerializeField] private float _animationDuration;
 
     private Image _blackBackgroundImage;
+    private bool _isMusicActive;
+    private bool _isSoundsActive;
 
     private void Awake()
     {
@@ -31,8 +38,10 @@ public class SettingsUI : MonoBehaviour
         _settingsButton.onClick.AddListener(OnSettingsButtonClicked);
         _resumeButton.onClick.AddListener(OnResumeButtonClicked);
         _mainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
+        _musicButton.onClick.AddListener(OnMusicButtonClicked);
+        _soundsButton.onClick.AddListener(OnSoundsButtonClicked);
     }
-    
+
     private void OnSettingsButtonClicked()
     {
         AudioManager.Instance.Play(SoundType.ButtonClickSound);
@@ -63,5 +72,21 @@ public class SettingsUI : MonoBehaviour
     {
         AudioManager.Instance.Play(SoundType.TransitionSound);
         TransitionManager.Instance.LoadLevel(Consts.Scenes.MENU_SCENE);
+    }
+
+    private void OnMusicButtonClicked()
+    {
+        AudioManager.Instance.Play(SoundType.ButtonClickSound);
+        _isMusicActive = !_isMusicActive;
+        _musicButton.image.sprite = _isMusicActive ? _musicActiveSprite : _musicInactiveSprite;
+        BackgroundMusic.Instance.PlayBackgroundMusic(_isMusicActive);
+    }
+
+    private void OnSoundsButtonClicked()
+    {
+        AudioManager.Instance.Play(SoundType.ButtonClickSound);
+        _isSoundsActive = !_isSoundsActive;
+        _soundsButton.image.sprite = _isSoundsActive ? _soundsActiveSprite : _soundsInactiveSprite;
+        AudioManager.Instance.SetSoundEffectsMute(!_isSoundsActive);
     }
 }
