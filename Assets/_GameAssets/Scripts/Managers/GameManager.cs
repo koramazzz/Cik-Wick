@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
     private void CatController_OnCatCatched()
     {
         _playerHealthUI.AnimateDamageForAll();
+        CameraShake.Instance.ShakeCamera(1.5f, 1.2f, 0.2f);
         StartCoroutine(OnGameOver());
     }
 }
