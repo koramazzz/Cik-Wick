@@ -14,8 +14,6 @@ public class CatStateController : MonoBehaviour
         if (currentState == newState) { return; }
         
         currentState = newState;
-        Debug.Log("Cat state changed to: " + currentState);
-
     }
 
     public CatState GetCurrentState()
